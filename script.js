@@ -35,6 +35,10 @@ btn.addEventListener("click", (e) => {
         alert("Maximum value is 100 pixels!");
         return;
     }
+    if (isNaN(size) || size <= 0) {
+        alert("Please input a valid number between 1 and 100!");
+        return;
+    }
 
     const totalSize = size * size;
     // remove each grid
