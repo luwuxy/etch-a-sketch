@@ -2,6 +2,7 @@ const container = document.querySelector(".container");
 container.style.display = "flex";
 container.style.width = "512px";
 container.style.height = "512px";
+container.style.border = "1px solid black";
 container.style.flexWrap = "wrap";
 
 // create a 32px sized box 256 times to create a 16x16 grid
