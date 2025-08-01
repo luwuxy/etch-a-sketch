@@ -30,7 +30,7 @@ for (let i = 0; i < 256; i++) {
 const btn = document.querySelector("#btn");
 // onclick, prompt for the size
 btn.addEventListener("click", (e) => {
-    const size = prompt("How big do you want the grid to be? (px)");
+    const size = prompt("How big do you want the grid to be per row/column? (max: 100)");
     if (size > 100) {
         alert("Maximum value is 100 pixels!");
         return;
@@ -43,6 +43,9 @@ btn.addEventListener("click", (e) => {
         grid.remove();
     })
 
+    container.style.width = `${32 * size}px`;
+    container.style.height = `${32 * size}px`;
+
     // initiate same loop to create grid
     for (let i = 0; i < totalSize; i++) {
         const grid = document.createElement("div");
@@ -51,8 +54,6 @@ btn.addEventListener("click", (e) => {
         grid.style.width = "32px";
         grid.style.height = "32px";
         grid.style.boxSizing = "border-box";
-        container.style.width = `${32 * size}px`;
-        container.style.height = `${32 * size}px`;
 
         let brightness = 100;
         grid.addEventListener("mouseover", (e) => {
