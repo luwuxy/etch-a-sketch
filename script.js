@@ -32,7 +32,7 @@ const btn = document.querySelector("#btn");
 btn.addEventListener("click", (e) => {
     const size = prompt("How big do you want the grid to be per row/column? (max: 100)");
     if (size > 100) {
-        alert("Maximum value is 100 pixels!");
+        alert("Maximum value is 100 squares!");
         return;
     }
     if (isNaN(size) || size <= 0) {
