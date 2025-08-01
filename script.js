@@ -12,35 +12,56 @@ for (let i = 0; i < 256; i++) {
     grid.style.width = "32px";
     grid.style.height = "32px";
     grid.style.boxSizing = "border-box";
+
+    // initial brightness
+    let brightness = 100;
     grid.addEventListener("mouseover", (e) => {
-        e.target.style.backgroundColor = "red";
-    })
+        // randomize each rgb value
+        e.target.style.backgroundColor = `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`;
+        // progressively darken the brightness of each grid
+        e.target.style.filter = `brightness(${brightness}%)`;
+        if (brightness !== 0) {
+            brightness -= 10;
+        }
+    });
     container.appendChild(grid);
 }
 
-
 const btn = document.querySelector("#btn");
-// onclick, prompt for the size. after that, remove all oldGrid, then initiate the same loop above.
+// onclick, prompt for the size
 btn.addEventListener("click", (e) => {
     const size = prompt("How big do you want the grid to be? (px)");
+    if (size > 100) {
+        alert("Maximum value is 100 pixels!");
+        return;
+    }
+
     const totalSize = size * size;
+    // remove each grid
     const oldGrid = document.querySelectorAll(".grid");
     oldGrid.forEach(grid => {
         grid.remove();
     })
 
+    // initiate same loop to create grid
     for (let i = 0; i < totalSize; i++) {
         const grid = document.createElement("div");
         grid.classList.add("grid");
         grid.style.border = "1px solid black";
         grid.style.width = "32px";
         grid.style.height = "32px";
+        grid.style.boxSizing = "border-box";
         container.style.width = `${32 * size}px`;
         container.style.height = `${32 * size}px`;
-        grid.style.boxSizing = "border-box";
+
+        let brightness = 100;
         grid.addEventListener("mouseover", (e) => {
-            e.target.style.backgroundColor = "red";
-        })
+            e.target.style.backgroundColor = `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`;
+            e.target.style.filter = `brightness(${brightness}%)`;
+            if (brightness !== 0) {
+                brightness -= 10;
+            }
+        });
         container.appendChild(grid);
     }
 })
