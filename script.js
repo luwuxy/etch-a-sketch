@@ -18,8 +18,9 @@ for (let i = 0; i < 256; i++) {
     container.appendChild(grid);
 }
 
-// 
+
 const btn = document.querySelector("#btn");
+// onclick, prompt for the size. after that, remove all oldGrid, then initiate the same loop above.
 btn.addEventListener("click", (e) => {
     const size = prompt("How big do you want the grid to be? (px)");
     const totalSize = size * size;
